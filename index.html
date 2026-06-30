@@ -48,10 +48,18 @@ nav {
   border-bottom: 1px solid rgba(96,165,250,.08);
 }
 .logo {
-  font-family:'Syne',sans-serif; font-weight:800; font-size:24px;
+  width:54px; height:54px; border-radius:50%;
+  padding:2px;
   background: linear-gradient(135deg, var(--blue), var(--violet));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
-  cursor:pointer; letter-spacing:-1px;
+  cursor:pointer;
+  box-shadow:0 0 26px rgba(96,165,250,.28);
+  overflow:hidden;
+  flex-shrink:0;
+}
+.logo img {
+  width:100%; height:100%;
+  display:block; object-fit:cover; object-position:center 30%;
+  border-radius:50%;
 }
 .nav-links { display:flex; gap:4px; }
 .nl {
@@ -206,6 +214,12 @@ nav {
   font-family:'Syne',sans-serif; font-weight:800; font-size:28px; color:#fff;
   box-shadow:0 0 30px rgba(96,165,250,.35), 0 0 60px rgba(96,165,250,.15);
   position:relative; z-index:1;
+  padding:3px; overflow:hidden;
+}
+.c-av img {
+  width:100%; height:100%;
+  display:block; object-fit:cover; object-position:center 30%;
+  border-radius:17px;
 }
 .c-name { font-family:'Syne',sans-serif; font-size:24px; font-weight:800; margin-bottom:4px; }
 .c-role { font-family:'Space Mono',monospace; font-size:12px; color:var(--blue); margin-bottom:24px; }
@@ -560,7 +574,7 @@ footer {
 
 <!-- NAV -->
 <nav>
-  <div class="logo" onclick="go('home')">OM.</div>
+  <div class="logo" onclick="go('home')"><img src="assets/omkar-photo.jpg" alt="Omkar Mede"></div>
   <div class="nav-links" id="navlinks">
     <button class="nl on" onclick="go('home')">Home</button>
     <button class="nl" onclick="go('about')">About</button>
@@ -595,7 +609,7 @@ footer {
           <div class="chip3d tg" style="top:98px;right:24px;">✨ Open Source</div>
           <div class="chip3d to" style="top:58px;right:24px;">🏆 Top 10</div>
 
-          <div class="c-av">OM</div>
+          <div class="c-av"><img src="assets/omkar-photo.jpg" alt="Omkar Mede"></div>
           <div class="c-name">Omkar Mede</div>
           <div class="c-role">// Full Stack Developer</div>
           <div class="stats4">
