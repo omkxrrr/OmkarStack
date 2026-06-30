@@ -525,9 +525,10 @@ nav {
 /* ─── FOOTER ──────────────────── */
 footer {
   position:relative; z-index:1; padding:36px 64px;
-  border-top:1px solid rgba(96,165,250,.07);
+  border-top:1px solid rgba(59,130,246,.16);
   display:flex; align-items:center; justify-content:space-between;
-  background:rgba(4,6,15,.8);
+  background:rgba(247,251,255,.78);
+  backdrop-filter:blur(18px);
 }
 .fl-t { font-family:'Space Mono',monospace; font-size:12px; color:var(--muted); }
 .fl-ls { display:flex; gap:20px; }
@@ -554,15 +555,83 @@ footer {
 
 /* Mobile */
 @media (max-width: 768px) {
-  nav { padding:16px 24px; }
-  .nav-links { display:none; }
-  .hero { grid-template-columns:1fr; padding:0 24px; gap:36px; }
-  .card3d-wrap { display:none; }
-  .wrap { padding:64px 24px; }
-  .about-grid, .con-grid { grid-template-columns:1fr; gap:36px; }
+  html, body { width:100%; overflow-x:hidden; }
+  nav {
+    padding:10px 14px;
+    gap:10px;
+    align-items:flex-start;
+  }
+  .logo { width:44px; height:44px; }
+  .nav-links {
+    display:flex;
+    gap:6px;
+    max-width:calc(100vw - 72px);
+    overflow-x:auto;
+    padding:2px 0 6px;
+    scrollbar-width:none;
+  }
+  .nav-links::-webkit-scrollbar { display:none; }
+  .nl {
+    flex:0 0 auto;
+    padding:8px 12px;
+    font-size:10px;
+    border-color:rgba(59,130,246,.14);
+    background:rgba(255,255,255,.58);
+  }
+  .page { padding-top:96px; scroll-margin-top:104px; }
+  #pg-home { min-height:auto; padding:112px 0 64px; }
+  .hero {
+    grid-template-columns:1fr;
+    padding:0 18px;
+    gap:28px;
+    align-items:start;
+  }
+  .h-tag { font-size:10px; padding:6px 12px; margin-bottom:18px; }
+  .htitle { font-size:clamp(42px,14vw,58px); letter-spacing:-2px; }
+  .hsub { font-size:15px; line-height:1.65; margin-bottom:28px; max-width:100%; }
+  .hbtns { flex-direction:column; gap:12px; }
+  .btn-a, .btn-b { width:100%; padding:13px 18px; text-align:center; }
+  .card3d-wrap { display:block; perspective:none; }
+  .card3d { transform:none !important; }
+  .card3d-face { border-radius:22px; padding:24px; }
+  .chip3d { display:none; }
+  .stats4 { grid-template-columns:1fr 1fr; gap:10px; }
+  .stat { padding:12px; }
+  .sn { font-size:22px; }
+  .tags, .ptechs { gap:6px; }
+  .tag2, .ptech { font-size:9px; }
+  .wrap { padding:58px 18px; }
+  .big { font-size:clamp(32px,10vw,42px); letter-spacing:-1px; margin-bottom:34px; }
+  .about-grid, .con-grid, .projects-grid, .experience-grid, .tools-grid {
+    grid-template-columns:1fr !important;
+    gap:28px !important;
+  }
   .grid2, .grid3, .ach-grid { grid-template-columns:1fr; }
-  .reel-grid { grid-template-columns:1fr 1fr; }
-  footer { flex-direction:column; gap:14px; text-align:center; }
+  .pcard { padding:24px; border-radius:20px; }
+  .pcard[style*="grid-column"] { grid-column:auto !important; }
+  .pnum { font-size:56px; top:8px; right:14px; }
+  .popen { width:100%; justify-content:center; }
+  .tl { padding-left:26px; }
+  .tli { padding:22px; }
+  .tldot { left:-34px; }
+  .ecard { align-items:flex-start; padding:20px; }
+  .creator-wrap { padding:34px 18px; border-radius:22px; }
+  .creator-wrap h3 { font-size:24px !important; }
+  .reel-grid { grid-template-columns:1fr; max-width:260px; }
+  .reel-ph[style*="transform"] { transform:none !important; }
+  .co-card { padding:16px; }
+  .f-box { padding:24px; border-radius:20px; }
+  footer { flex-direction:column; gap:14px; text-align:center; padding:28px 18px; }
+  .fl-ls { flex-wrap:wrap; justify-content:center; gap:12px 18px; }
+}
+
+@media (max-width: 420px) {
+  .stats4 { grid-template-columns:1fr; }
+  .c-av { width:68px; height:68px; }
+  .c-name { font-size:21px; }
+  .irow { padding:13px 14px; }
+  .soc-card { padding:24px 18px; }
+  .co-val { overflow-wrap:anywhere; }
 }
 </style>
 </head>
@@ -688,7 +757,7 @@ footer {
   <div class="wrap">
     <div class="tag">What I've Built</div>
     <h2 class="big">My <span>Projects</span></h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <div class="projects-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
       <div class="pcard rv">
         <div class="gc-glow"></div>
         <div class="pnum">01</div>
@@ -751,7 +820,7 @@ footer {
   <div class="wrap">
     <div class="tag">My Journey</div>
     <h2 class="big">Experience &amp; <span>Education</span></h2>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;">
+    <div class="experience-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:60px;">
       <div>
         <div class="tag" style="margin-bottom:24px;">Work Experience</div>
         <div class="tl">
@@ -794,7 +863,7 @@ footer {
           </div>
         </div>
         <div class="tag" style="margin:32px 0 18px;">Tools &amp; Technologies</div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+        <div class="tools-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
           <div class="irow rv" style="flex-direction:column;align-items:flex-start;gap:4px;padding:14px;"><div class="ilabel">FRONTEND</div><div class="ival" style="font-size:13px;">HTML5, CSS3, React.js</div></div>
           <div class="irow rv" style="flex-direction:column;align-items:flex-start;gap:4px;padding:14px;"><div class="ilabel">BACKEND</div><div class="ival" style="font-size:13px;">Node.js, Express.js, REST APIs</div></div>
           <div class="irow rv" style="flex-direction:column;align-items:flex-start;gap:4px;padding:14px;"><div class="ilabel">DEVTOOLS</div><div class="ival" style="font-size:13px;">Git, GitHub, VS Code, Postman</div></div>
